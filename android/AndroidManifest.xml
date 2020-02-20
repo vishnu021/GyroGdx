@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.zkncpt.gdx.gyrogdx" >
+
+    <uses-feature android:name="android.software.live_wallpaper" android:required="true" />
+    <uses-feature android:name="android.hardware.sensor.accelerometer" android:required="false" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:description="@string/app_name"
+        android:theme="@style/GdxTheme" >
+        <activity android:name="com.zkncpt.gdx.gyrogdx.AndroidLauncher"
+            android:label="@string/app_name" 
+			android:icon="@drawable/ic_launcher"
+            android:screenOrientation="portrait"
+            android:description="@string/app_name"
+            android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <service
+            android:name="com.zkncpt.gdx.gyrogdx.LiveWallpaper"
+            android:label="@string/app_name" 
+            android:screenOrientation="portrait"
+            android:icon="@drawable/ic_launcher"
+            android:description="@string/app_name"
+            android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize"
+            android:permission="android.permission.BIND_WALLPAPER">
+            <intent-filter>
+                <action android:name="android.service.wallpaper.WallpaperService" />
+            </intent-filter>
+            <meta-data android:name="android.service.wallpaper"
+                android:resource="@xml/livewallpaper" />
+        </service>
+    </application>
+
+</manifest>
